@@ -20,14 +20,14 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
     targetNamespace="http://echo" 
     xmlns:sca="http://www.osoa.org/xmlns/sca/1.0"
-    xmlns:amf3="http://osteching.com/sca/binding/amf3" 
+    xmlns:osteching="http://osteching.com/sca/binding/BlazeDS" 
     elementFormDefault="qualified">
 
     <import namespace="http://www.osoa.org/xmlns/sca/1.0"/>
 
-    <element name="binding.amf3" type="amf3:AMF3Binding"/>
+    <element name="binding.blazeds" type="osteching:blazeds"/>
     
-    <complexType name="AMF3Binding">
+    <complexType name="blazeds">
         <complexContent>
             <extension base="sca:Binding">
             </extension>
