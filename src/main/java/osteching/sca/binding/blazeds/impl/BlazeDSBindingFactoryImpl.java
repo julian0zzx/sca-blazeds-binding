@@ -4,7 +4,7 @@ import osteching.sca.binding.blazeds.BlazeDSBinding;
 import osteching.sca.binding.blazeds.BlazeDSBindingFactory;
 
 public class BlazeDSBindingFactoryImpl implements BlazeDSBindingFactory {
-    public BlazeDSBinding createAMF3Binding() {
+    public BlazeDSBinding createBlazeDSBinding() {
         return new BlazeDSBindingImpl();
     }
 }
