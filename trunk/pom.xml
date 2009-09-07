@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>osteching</groupId>
-    <artifactId>sca.binding.amf3</artifactId>
+    <artifactId>sca.binding.blazeds</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1</version>
-    <name>SCA AMF3 Binding</name>
+    <name>SCA BlazeDS Binding</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>

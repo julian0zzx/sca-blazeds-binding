@@ -16,4 +16,4 @@
 # under the License. 
 
 # Implementation class for the binding provider extension
-osteching.sca.binding.amf3.provider.AMF3BindingProviderFactory;model=osteching.sca.binding.amf3.AMF3Binding
+osteching.sca.binding.blazeds.provider.BlazeDSBindingProviderFactory;model=osteching.sca.binding.blazeds.BlazeDSBinding
