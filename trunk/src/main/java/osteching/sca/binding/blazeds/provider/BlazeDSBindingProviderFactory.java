@@ -12,6 +12,9 @@ import org.apache.tuscany.sca.runtime.RuntimeComponentService;
 
 import osteching.sca.binding.blazeds.BlazeDSBinding;
 
+/**
+ * @author julian0zzx@gmail.com
+ */
 public class BlazeDSBindingProviderFactory implements BindingProviderFactory<BlazeDSBinding> {
     private MessageFactory messageFactory;
 

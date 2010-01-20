@@ -9,6 +9,9 @@ import org.apache.tuscany.sca.policy.PolicySet;
 
 import osteching.sca.binding.blazeds.BlazeDSBinding;
 
+/**
+ * @author julian0zzx@gmail.com
+ */
 public class BlazeDSBindingImpl implements BlazeDSBinding {
     private String name;
     private String uri;

@@ -30,7 +30,19 @@
     <complexType name="blazeds">
         <complexContent>
             <extension base="sca:Binding">
+                <attribute name="useContextClassLoader">
+                    <annotation>
+                        <documentation>If it is true, current thread class loader will be used.</documentation>
+                    </annotation>
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="true"></enumeration>
+                            <enumeration value="false"></enumeration>
+                        </restriction>
+                    </simpleType>
+                </attribute>
             </extension>
         </complexContent>
     </complexType>
+    
 </schema>
