@@ -3,6 +3,9 @@
  */
 package osteching.sca.binding.blazeds.broker;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import flex.messaging.FlexContext;
 import flex.messaging.MessageBroker;
 import flex.messaging.io.SerializationContext;
@@ -42,7 +45,7 @@ public class MessageBrokerProxy {
     /** 
      * Delegate to MessageBroker
      */
-    public void invoke() {
+    public void invoke(HttpServletRequest req, HttpServletResponse res) {
         
     }
 }
