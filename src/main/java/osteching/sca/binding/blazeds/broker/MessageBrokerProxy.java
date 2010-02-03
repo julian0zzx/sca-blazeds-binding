@@ -3,14 +3,12 @@
  */
 package osteching.sca.binding.blazeds.broker;
 
-import java.io.IOException;
-
-import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import flex.management.MBeanLifecycleManager;
+import flex.management.MBeanServerLocatorFactory;
 import flex.messaging.FlexContext;
-import flex.messaging.HttpFlexSession;
 import flex.messaging.MessageBroker;
 import flex.messaging.MessageException;
 import flex.messaging.config.ConfigurationManager;
@@ -19,26 +17,30 @@ import flex.messaging.config.MessagingConfiguration;
 import flex.messaging.endpoints.Endpoint;
 import flex.messaging.io.SerializationContext;
 import flex.messaging.io.TypeMarshallingContext;
-import flex.messaging.log.Log;
-import flex.messaging.log.LogCategories;
-import flex.messaging.util.ClassUtil;
-import flex.messaging.util.Trace;
 
 /**
  * This class set up BlaseDS environment. Most logic of this class comes from MessageBrokerServlet.
  * 
  * @author julian0zzx@gmail.com
  */
-public class MessageBrokerProxy {
+public final class MessageBrokerProxy {
+    
+    private static MessageBrokerProxy instance = new MessageBrokerProxy();
+    
     private MessageBroker broker;
-    static {
+    
+    private MessageBrokerProxy() {
         // allocate static thread local objects
         MessageBroker.createThreadLocalObjects();
         FlexContext.createThreadLocalObjects();
         SerializationContext.createThreadLocalObjects();
         TypeMarshallingContext.createThreadLocalObjects();
     }
-
+    
+    public static MessageBrokerProxy getInstance() {
+        return instance;
+    }
+    
     /**
      * Set up BlazeDS environment
      */
@@ -66,7 +68,14 @@ public class MessageBrokerProxy {
     }
 
     public void destory() {
-
+        if (broker != null) {
+            broker.stop();
+            if (broker.isManaged()) {
+                MBeanLifecycleManager.unregisterRuntimeMBeans(broker);
+            }
+            // release static thread locals
+            destroyThreadLocals();
+        }
     }
 
     /**
@@ -79,15 +88,14 @@ public class MessageBrokerProxy {
         // there is no ServletConfig
         FlexContext.setThreadLocalObjects(null, null, broker, req, res, null);
 
-        HttpFlexSession fs = HttpFlexSession.getFlexSession(req);
-
         // omit user check
 
         String contextPath = req.getContextPath();
         String pathInfo = req.getPathInfo();
         String endpointPath = req.getServletPath();
-        if (pathInfo != null)
+        if (pathInfo != null) {
             endpointPath = endpointPath + pathInfo;
+        }
 
         Endpoint endpoint = null;
         try {
@@ -111,6 +119,15 @@ public class MessageBrokerProxy {
     }
 
     private void setupInternalPathResolver() {
-
+    }
+    
+    private void destroyThreadLocals() {
+        // clear static member variables
+        MBeanServerLocatorFactory.clear();
+        // Destroy static thread local objects
+        MessageBroker.releaseThreadLocalObjects();
+        FlexContext.releaseThreadLocalObjects();
+        SerializationContext.releaseThreadLocalObjects();
+        TypeMarshallingContext.releaseThreadLocalObjects();
     }
 }
