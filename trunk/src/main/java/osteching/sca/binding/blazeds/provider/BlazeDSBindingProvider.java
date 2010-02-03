@@ -1,21 +1,21 @@
 package osteching.sca.binding.blazeds.provider;
 
-import org.apache.tuscany.sca.binding.http.HTTPBinding;
+import javax.servlet.Servlet;
+
 import org.apache.tuscany.sca.core.ExtensionPointRegistry;
 import org.apache.tuscany.sca.host.http.SecurityContext;
 import org.apache.tuscany.sca.host.http.ServletHost;
 import org.apache.tuscany.sca.interfacedef.InterfaceContract;
 import org.apache.tuscany.sca.invocation.MessageFactory;
 import org.apache.tuscany.sca.provider.OperationSelectorProvider;
-import org.apache.tuscany.sca.provider.OperationSelectorProviderFactory;
 import org.apache.tuscany.sca.provider.ProviderFactoryExtensionPoint;
 import org.apache.tuscany.sca.provider.ServiceBindingProvider;
 import org.apache.tuscany.sca.provider.WireFormatProvider;
-import org.apache.tuscany.sca.provider.WireFormatProviderFactory;
 import org.apache.tuscany.sca.runtime.RuntimeComponent;
 import org.apache.tuscany.sca.runtime.RuntimeComponentService;
 
 import osteching.sca.binding.blazeds.BlazeDSBinding;
+import osteching.sca.binding.blazeds.broker.MessageBrokerServlet;
 
 public class BlazeDSBindingProvider implements ServiceBindingProvider {
     private ExtensionPointRegistry extensionPoints;
@@ -70,9 +70,11 @@ public class BlazeDSBindingProvider implements ServiceBindingProvider {
 
     @Override
     public void start() {
-        // TODO Auto-generated method stub
-        // register URI here
-        servletHost.addServletMapping(servletMapping, servlet, new SecurityContext(););
+        Servlet servlet = new MessageBrokerServlet(binding, messageFactory);
+        
+        servletMapping = binding.getURI();
+
+        servletHost.addServletMapping(servletMapping, servlet, new SecurityContext());
     }
 
     @Override
