@@ -21,9 +21,9 @@ public class BlazeDSBindingModuleActivator implements ModuleActivator {
     
     @Override
     public void start(ExtensionPointRegistry registry) {
+        servletHost = new ExtensibleServletHost(registry.getExtensionPoint(ServletHostExtensionPoint.class));
         MessageBrokerProxy proxy = MessageBrokerProxy.getInstance();
         proxy.init();
-        servletHost = new ExtensibleServletHost(registry.getExtensionPoint(ServletHostExtensionPoint.class));
     }
 
     @Override
