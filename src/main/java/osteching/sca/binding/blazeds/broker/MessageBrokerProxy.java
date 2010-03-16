@@ -36,6 +36,8 @@ import flex.messaging.io.TypeMarshallingContext;
  */
 public final class MessageBrokerProxy {
     
+    private static final String FLEX_SERVICES_CONFIG_PATH_PREFIX = "/META-INF/flex/";
+
     private static MessageBrokerProxy instance = new MessageBrokerProxy();
     
     private MessageBroker broker;
@@ -137,7 +139,10 @@ public final class MessageBrokerProxy {
         return new ServletConfig() {
 
             @Override
-            public String getInitParameter(String arg0) {
+            public String getInitParameter(String param) {
+                if ("services.configuration.file".equals(param)) {
+                    return FLEX_SERVICES_CONFIG_PATH_PREFIX + "services-config.xml";
+                }
                 return null;
             }
 
@@ -217,6 +222,9 @@ public final class MessageBrokerProxy {
 
                     @Override
                     public InputStream getResourceAsStream(String path) {
+                        if (path.startsWith(FLEX_SERVICES_CONFIG_PATH_PREFIX)) {
+                            return MessageBrokerProxy.class.getResourceAsStream(path);
+                        }
                         return null;
                     }
 
