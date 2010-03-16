@@ -15,7 +15,6 @@ import osteching.sca.binding.blazeds.BlazeDSBinding;
 public class BlazeDSBindingImpl implements BlazeDSBinding {
     private String name;
     private String uri;
-    private String channel;
     
     private List<Intent> requiredIntents = new ArrayList<Intent>();
     private List<PolicySet> policySets = new ArrayList<PolicySet>();
@@ -36,16 +35,6 @@ public class BlazeDSBindingImpl implements BlazeDSBinding {
 
     public void setURI(String uri) {
         this.uri = uri;
-    }
-
-    
-    
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
     }
 
     public boolean isUnresolved() {
