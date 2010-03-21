@@ -19,14 +19,12 @@
 -->
 <composite
     xmlns="http://www.osoa.org/xmlns/sca/1.0"
-    targetNamespace="http://osteching.com/sca/binding/BlazeDS"
-    xmlns:bz="http://osteching.com/sca/binding/BlazeDS"
+    targetNamespace="http://osteching.com/sca/binding"
+    xmlns:bz="http://osteching.com/sca/binding"
     name="BlazeDSBinding">
     
     <component name="BlazeDSComponent">
-        <implementation.java
-            class="osteching.sca.binding.blazeds.BuddyServiceImpl" />
-            
+        <implementation.java class="osteching.sca.binding.blazeds.BuddyServiceImpl" />
         <service name="BuddyService">
             <bz:binding.blazeds uri="http://demo.osteching.com:8080/BuddyService" />
         </service>

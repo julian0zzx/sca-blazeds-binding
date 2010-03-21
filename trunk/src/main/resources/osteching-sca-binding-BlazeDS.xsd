@@ -18,9 +18,9 @@
  * under the License.    
 -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
-    targetNamespace="http://osteching.com/sca/binding/BlazeDS" 
+    targetNamespace="http://osteching.com/sca/binding" 
     xmlns:sca="http://www.osoa.org/xmlns/sca/1.0"
-    xmlns:osteching="http://osteching.com/sca/binding/BlazeDS" 
+    xmlns:osteching="http://osteching.com/sca/binding" 
     elementFormDefault="qualified">
 
     <import namespace="http://www.osoa.org/xmlns/sca/1.0"/>
