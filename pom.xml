@@ -47,19 +47,27 @@
             <version>3.2.0.3978</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
+            <groupId>com.adobe.blazeds</groupId>
+            <artifactId>blazeds-remoting</artifactId>
+            <version>3.2.0.3978</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>0.9.17</version>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-host-jetty</artifactId>
+            <version>1.5.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>0.9.17</version>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-resource-runtime</artifactId>
+            <version>1.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-java-runtime</artifactId>
+            <version>1.5.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
@@ -74,14 +82,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-        	<groupId>org.apache.tuscany.sca</groupId>
-        	<artifactId>tuscany-host-http</artifactId>
-        	<version>1.5.1</version>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-host-http</artifactId>
+            <version>1.5.1</version>
         </dependency>
         <dependency>
-        	<groupId>org.apache.tuscany.sca</groupId>
-        	<artifactId>tuscany-binding-http</artifactId>
-        	<version>1.5.1</version>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-binding-http</artifactId>
+            <version>1.5.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tuscany.sca</groupId>
