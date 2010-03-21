@@ -235,7 +235,7 @@ public final class MessageBrokerProxy {
 
                     @Override
                     public String getServerInfo() {
-                        return null;
+                        return "---BlazeDS-Binding---";
                     }
 
                     @Override
