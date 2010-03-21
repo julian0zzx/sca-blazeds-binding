@@ -8,10 +8,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.tuscany.sca.assembly.OperationSelector;
-import org.apache.tuscany.sca.assembly.WireFormat;
 import org.apache.tuscany.sca.assembly.xml.PolicyAttachPointProcessor;
-import org.apache.tuscany.sca.binding.http.HTTPBindingFactory;
 import org.apache.tuscany.sca.contribution.ModelFactoryExtensionPoint;
 import org.apache.tuscany.sca.contribution.processor.BaseStAXArtifactProcessor;
 import org.apache.tuscany.sca.contribution.processor.StAXArtifactProcessor;
@@ -126,7 +123,7 @@ public class BlazeDSBindingProcessor extends BaseStAXArtifactProcessor implement
     @Override
     public void resolve(BlazeDSBinding binding, ModelResolver resolver)
                     throws ContributionResolveException {
-        policyProcessor.resolvePolicies(binding, resolver);
+        extensionAttributeProcessor.resolve(binding, resolver);
     }
 
 }
