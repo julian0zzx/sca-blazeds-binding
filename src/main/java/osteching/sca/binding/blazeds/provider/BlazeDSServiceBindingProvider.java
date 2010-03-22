@@ -2,15 +2,11 @@ package osteching.sca.binding.blazeds.provider;
 
 import javax.servlet.Servlet;
 
-import org.apache.tuscany.sca.core.ExtensionPointRegistry;
 import org.apache.tuscany.sca.host.http.SecurityContext;
 import org.apache.tuscany.sca.host.http.ServletHost;
 import org.apache.tuscany.sca.interfacedef.InterfaceContract;
 import org.apache.tuscany.sca.invocation.MessageFactory;
-import org.apache.tuscany.sca.provider.OperationSelectorProvider;
-import org.apache.tuscany.sca.provider.ProviderFactoryExtensionPoint;
 import org.apache.tuscany.sca.provider.ServiceBindingProvider;
-import org.apache.tuscany.sca.provider.WireFormatProvider;
 import org.apache.tuscany.sca.runtime.RuntimeComponent;
 import org.apache.tuscany.sca.runtime.RuntimeComponentService;
 
@@ -18,7 +14,6 @@ import osteching.sca.binding.blazeds.BlazeDSBinding;
 import osteching.sca.binding.blazeds.broker.MessageBrokerServlet;
 
 public class BlazeDSServiceBindingProvider implements ServiceBindingProvider {
-//    private ExtensionPointRegistry extensionPoints;
 
     private RuntimeComponent component;
     private RuntimeComponentService service;
@@ -29,11 +24,9 @@ public class BlazeDSServiceBindingProvider implements ServiceBindingProvider {
     private String servletMapping;
 
     BlazeDSServiceBindingProvider(RuntimeComponent component, RuntimeComponentService service,
-                    BlazeDSBinding binding, /*ExtensionPointRegistry extensionPoints,
-                    MessageFactory messageFactory,*/ ServletHost servletHost) {
+                    BlazeDSBinding binding, ServletHost servletHost) {
         this.component = component;
         this.service = service;
-
         this.binding = binding;
         this.servletHost = servletHost;
     }

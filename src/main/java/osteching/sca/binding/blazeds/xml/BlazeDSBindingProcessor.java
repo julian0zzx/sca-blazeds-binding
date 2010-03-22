@@ -46,7 +46,7 @@ public class BlazeDSBindingProcessor extends BaseStAXArtifactProcessor implement
         ModelFactoryExtensionPoint modelFactories = extensionPoints
                         .getExtensionPoint(ModelFactoryExtensionPoint.class);
         this.blazeDSBindingFactory = modelFactories.getFactory(BlazeDSBindingFactory.class);
-        this.extensionProcessor = (StAXArtifactProcessor<Object>) extensionProcessor;
+        this.extensionProcessor = extensionProcessor;
         this.extensionAttributeProcessor = extensionAttributeProcessor;
         this.policyFactory = modelFactories.getFactory(PolicyFactory.class);
         this.policyProcessor = new PolicyAttachPointProcessor(policyFactory);
