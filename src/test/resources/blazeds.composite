@@ -25,7 +25,7 @@
     
     <component name="BlazeDSComponent">
         <implementation.java class="osteching.sca.binding.blazeds.BuddyServiceImpl" />
-        <service name="buddyService">
+        <service name="BuddyServiceImpl">
             <bz:binding.blazeds name="blazeds-binding" uri="http://demo.osteching.com:8080/BuddyService" />
         </service>
     </component>
