@@ -1,3 +1,2 @@
 # Implementation class for the artifact processor extension
-#osteching.sca.binding.blazeds.xml.BlazeDSBindingProcessor;qname=http://osteching.com/sca/binding#binding.blazeds,model=osteching.sca.binding.blazeds.BlazeDSBinding,factory=osteching.sca.binding.blazeds.BlazeDSBindingFactory
 org.apache.tuscany.sca.assembly.xml.DefaultBeanModelProcessor;qname=http://osteching.com/sca/binding#binding.blazeds,model=osteching.sca.binding.blazeds.BlazeDSBinding,factory=osteching.sca.binding.blazeds.BlazeDSBindingFactory
