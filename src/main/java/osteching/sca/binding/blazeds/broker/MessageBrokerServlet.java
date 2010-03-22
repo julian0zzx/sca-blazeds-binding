@@ -31,5 +31,5 @@ public class MessageBrokerServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) {
         MessageBrokerProxy.getInstance().invoke(request, response);
     }
-    
+
 }
