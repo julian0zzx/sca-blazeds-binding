@@ -14,21 +14,16 @@ import osteching.sca.binding.blazeds.broker.MessageBrokerProxy;
  */
 public class BlazeDSBindingModuleActivator implements ModuleActivator {
 
-//    private ServletHost servletHost = null;
-    
     @Override
     public void start(ExtensionPointRegistry registry) {
-//        servletHost = new ExtensibleServletHost(registry.getExtensionPoint(ServletHostExtensionPoint.class));
         MessageBrokerProxy proxy = MessageBrokerProxy.getInstance();
         proxy.init();
     }
 
     @Override
     public void stop(ExtensionPointRegistry registry) {
-//        MessageBrokerProxy proxy = registry.getExtensionPoint(MessageBrokerProxy.class);
-//        proxy.destory();
-//        registry.removeExtensionPoint(proxy);
-//        servletHost = null;
+        MessageBrokerProxy proxy = MessageBrokerProxy.getInstance();
+        proxy.destory();
     }
 
 }
