@@ -3,6 +3,8 @@
  */
 package osteching.sca.binding.blazeds;
 
+import java.io.IOException;
+
 import org.apache.tuscany.sca.node.SCAClient;
 import org.apache.tuscany.sca.node.SCANode;
 import org.apache.tuscany.sca.node.SCANodeFactory;
@@ -13,7 +15,7 @@ import org.apache.tuscany.sca.node.SCANodeFactory;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         SCANodeFactory factory = SCANodeFactory.newInstance();
         SCANode node = factory.createSCANodeFromClassLoader("blazeds.composite", Main.class.getClassLoader());
