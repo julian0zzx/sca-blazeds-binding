@@ -36,7 +36,7 @@ import flex.messaging.io.TypeMarshallingContext;
  */
 public final class MessageBrokerProxy {
     
-    private static final String FLEX_SERVICES_CONFIG_PATH_PREFIX = "/META-INF/flex/";
+    private static final String FLEX_SERVICES_CONFIG_PATH_PREFIX = "/flex/";
 
     private static MessageBrokerProxy instance = new MessageBrokerProxy();
     
