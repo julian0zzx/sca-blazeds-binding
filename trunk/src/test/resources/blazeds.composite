@@ -26,7 +26,7 @@
     <component name="BlazeDSComponent">
         <implementation.java class="osteching.sca.binding.blazeds.BuddyServiceImpl" />
         <service name="BuddyService">
-            <bz:binding.blazeds name="blazeds-binding" uri="http://demo.osteching.com:8080/messagebroker/amf" />
+            <bz:binding.blazeds uri="http://localhost:8080/messagebroker/amf" />
         </service>
     </component>
 </composite>
