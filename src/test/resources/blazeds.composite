@@ -5,6 +5,6 @@
         <implementation.java class="osteching.sca.binding.blazeds.BuddyServiceImpl" />
     </component>
     <service name="bindingTest" promote="BlazeDSComponent/BuddyService">
-        <bz:binding.blazeds uri="http://localhost:8080/messagebroker/amf" />
+        <bz:binding.blazeds uri="/messagebroker/*" />
     </service>
 </composite>
