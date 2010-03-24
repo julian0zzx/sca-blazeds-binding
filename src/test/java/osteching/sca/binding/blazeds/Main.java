@@ -22,8 +22,7 @@ public class Main {
         node.start();
         
         BuddyService buddyService = ((SCAClient)node).getService(BuddyService.class, "BlazeDSComponent");
-//        while(true) {}
-        System.out.println(buddyService);
+        while(true) {}
 
     }
 
