@@ -57,9 +57,9 @@ public final class MessageBrokerProxy {
     /**
      * Set up BlazeDS environment
      */
-    public void init() {
+    public void init(ServletContext servletContext) {
         ClassLoader loader = getClassLoader();
-        ServletConfig mockServletConfig = getMockServletConfig();
+        ServletConfig mockServletConfig = getMockServletConfig(servletContext);
         // Get the configuration manager
         ConfigurationManager configManager = loadMessagingConfiguration(mockServletConfig);
         // Load configuration
@@ -90,6 +90,7 @@ public final class MessageBrokerProxy {
             // release static thread locals
             destroyThreadLocals();
         }
+        instance = null;
     }
 
     /**
@@ -135,7 +136,7 @@ public final class MessageBrokerProxy {
     private void setupInternalPathResolver() {
     }
     
-    private ServletConfig getMockServletConfig() {
+    private ServletConfig getMockServletConfig(final ServletContext servletContext) {
         return new ServletConfig() {
 
             @Override
@@ -153,131 +154,7 @@ public final class MessageBrokerProxy {
 
             @Override
             public ServletContext getServletContext() {
-                return new ServletContext() {
-
-                    @Override
-                    public Object getAttribute(String name) {
-                        return null;
-                    }
-
-                    @Override
-                    public Enumeration getAttributeNames() {
-                        return null;
-                    }
-
-                    @Override
-                    public ServletContext getContext(String uripath) {
-                        return null;
-                    }
-
-                    @Override
-                    public String getContextPath() {
-                        return null;
-                    }
-
-                    @Override
-                    public String getInitParameter(String name) {
-                        return null;
-                    }
-
-                    @Override
-                    public Enumeration getInitParameterNames() {
-                        return null;
-                    }
-
-                    @Override
-                    public int getMajorVersion() {
-                        return 0;
-                    }
-
-                    @Override
-                    public String getMimeType(String file) {
-                        return null;
-                    }
-
-                    @Override
-                    public int getMinorVersion() {
-                        return 0;
-                    }
-
-                    @Override
-                    public RequestDispatcher getNamedDispatcher(String name) {
-                        return null;
-                    }
-
-                    @Override
-                    public String getRealPath(String path) {
-                        return null;
-                    }
-
-                    @Override
-                    public RequestDispatcher getRequestDispatcher(String path) {
-                        return null;
-                    }
-
-                    @Override
-                    public URL getResource(String path) throws MalformedURLException {
-                        return null;
-                    }
-
-                    @Override
-                    public InputStream getResourceAsStream(String path) {
-                        if (path.startsWith(FLEX_SERVICES_CONFIG_PATH_PREFIX)) {
-                            return MessageBrokerProxy.class.getResourceAsStream(path);
-                        }
-                        return null;
-                    }
-
-                    @Override
-                    public Set getResourcePaths(String path) {
-                        return null;
-                    }
-
-                    @Override
-                    public String getServerInfo() {
-                        return "---BlazeDS-Binding---";
-                    }
-
-                    @Override
-                    public Servlet getServlet(String name) throws ServletException {
-                        return null;
-                    }
-
-                    @Override
-                    public String getServletContextName() {
-                        return null;
-                    }
-
-                    @Override
-                    public Enumeration getServletNames() {
-                        return null;
-                    }
-
-                    @Override
-                    public Enumeration getServlets() {
-                        return null;
-                    }
-
-                    @Override
-                    public void log(String msg) {
-                    }
-
-                    @Override
-                    public void log(Exception exception, String msg) {
-                    }
-
-                    @Override
-                    public void log(String message, Throwable throwable) {
-                    }
-
-                    @Override
-                    public void removeAttribute(String name) {
-                    }
-
-                    @Override
-                    public void setAttribute(String name, Object object) {
-                    }
-                };
+                return servletContext;
             }
 
             @Override
