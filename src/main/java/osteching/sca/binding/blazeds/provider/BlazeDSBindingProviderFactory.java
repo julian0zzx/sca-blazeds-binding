@@ -1,8 +1,10 @@
 package osteching.sca.binding.blazeds.provider;
 
+import org.apache.tuscany.sca.contribution.ModelFactoryExtensionPoint;
 import org.apache.tuscany.sca.core.ExtensionPointRegistry;
 import org.apache.tuscany.sca.host.http.ServletHost;
 import org.apache.tuscany.sca.host.http.ServletHostExtensionPoint;
+import org.apache.tuscany.sca.invocation.MessageFactory;
 import org.apache.tuscany.sca.provider.BindingProviderFactory;
 import org.apache.tuscany.sca.provider.ReferenceBindingProvider;
 import org.apache.tuscany.sca.provider.ServiceBindingProvider;
@@ -17,10 +19,13 @@ import osteching.sca.binding.blazeds.BlazeDSBinding;
  */
 public class BlazeDSBindingProviderFactory implements BindingProviderFactory<BlazeDSBinding> {
     private ServletHost servletHost;
+    private MessageFactory messageFactory;
 
     public BlazeDSBindingProviderFactory(ExtensionPointRegistry extensionPoints) {
         ServletHostExtensionPoint servletHosts = extensionPoints.getExtensionPoint(ServletHostExtensionPoint.class);
         this.servletHost = servletHosts.getServletHosts().get(0);
+        ModelFactoryExtensionPoint modelFactories = extensionPoints.getExtensionPoint(ModelFactoryExtensionPoint.class);
+        messageFactory = modelFactories.getFactory(MessageFactory.class);
     }
     
     // no BlazeDS reference till now
@@ -31,7 +36,7 @@ public class BlazeDSBindingProviderFactory implements BindingProviderFactory<Bla
 
     public ServiceBindingProvider createServiceBindingProvider(RuntimeComponent component,
                     RuntimeComponentService service, BlazeDSBinding binding) {
-        return new BlazeDSServiceBindingProvider(component, service, binding, servletHost);
+        return new BlazeDSServiceBindingProvider(component, service, binding, messageFactory, servletHost);
     }
 
     public Class<BlazeDSBinding> getModelType() {

@@ -2,6 +2,7 @@ package osteching.sca.binding.blazeds.provider;
 
 import javax.servlet.Servlet;
 
+import org.apache.tuscany.sca.core.ExtensionPointRegistry;
 import org.apache.tuscany.sca.host.http.SecurityContext;
 import org.apache.tuscany.sca.host.http.ServletHost;
 import org.apache.tuscany.sca.interfacedef.InterfaceContract;
@@ -28,10 +29,11 @@ public class BlazeDSServiceBindingProvider implements ServiceBindingProvider {
     private String servletMapping;
 
     BlazeDSServiceBindingProvider(RuntimeComponent component, RuntimeComponentService service,
-                    BlazeDSBinding binding, ServletHost servletHost) {
+                    BlazeDSBinding binding, MessageFactory messageFactory, ServletHost servletHost) {
         this.component = component;
         this.service = service;
         this.binding = binding;
+        this.messageFactory = messageFactory;
         this.servletHost = servletHost;
     }
 
@@ -45,7 +47,8 @@ public class BlazeDSServiceBindingProvider implements ServiceBindingProvider {
         RuntimeComponentService componentService = (RuntimeComponentService) service;
         RuntimeWire wire = componentService.getRuntimeWire(binding);
         Invoker serviceInvoker = null;
-        Servlet servlet = new MessageBrokerServlet(binding, wire.getInvocationChains(), messageFactory);
+        Servlet servlet = new MessageBrokerServlet(binding, wire.getInvocationChains(), component,
+                        messageFactory);
         servletMapping = binding.getURI();
         servletHost.addServletMapping(servletMapping, servlet, new SecurityContext());
     }
